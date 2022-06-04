@@ -17,7 +17,10 @@
 *
 ******************************************************************************************************************/
 
-import java.io.*; // note we must add this here since we use BufferedReader class to read from the keyboard
+import java.io.DataInputStream;
+import java.io.EOFException;
+import java.io.FileInputStream;
+import java.io.IOException;
 
 public class SourceFilter extends FilterFramework
 {

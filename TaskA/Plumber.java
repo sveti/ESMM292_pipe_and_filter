@@ -37,9 +37,9 @@ public class Plumber
 		* source filter (Filter3).
 		****************************************************************************/
 
-		Filter3.Connect(temperatureFilter); // This esstially says, "connect Filter3 input port to temperatureFilter output port
-	   	temperatureFilter.Connect(altitudeFilter);// This esstially says, "connect temperatureFilter intput port to Filter1 output port
-	    altitudeFilter.Connect(Filter1);
+		Filter3.Connect(temperatureFilter); // This essentially says, "connect Filter3 input port to temperatureFilter output port
+	   	temperatureFilter.Connect(altitudeFilter);// This essentially says, "connect temperatureFilter intput port to altitudeFilter output port
+	    altitudeFilter.Connect(Filter1);// This essentially says, "connect altitudeFilter intput port to Filter1 output port
 		/****************************************************************************
 		* Here we start the filters up. All-in-all,... its really kind of boring.
 		****************************************************************************/

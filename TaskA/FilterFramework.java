@@ -34,7 +34,8 @@
 *
 ******************************************************************************************************************/
 
-import java.io.*;
+import java.io.PipedInputStream;
+import java.io.PipedOutputStream;
 
 public class FilterFramework extends Thread
 {

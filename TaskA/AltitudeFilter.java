@@ -69,7 +69,9 @@ public class AltitudeFilter extends FilterFramework {
                     bytesread++;									// Increment the byte count
 
                 }
-
+                /*************************************************************
+                 *	If the id is 2 - the measurement is altitude, we convert it
+                 *************************************************************/
 
                 if ( id == 2 )
                 {
@@ -78,17 +80,7 @@ public class AltitudeFilter extends FilterFramework {
 
                 } // if
 
-                byte[] idForBuffer = ByteBuffer.allocate(IdLength).putInt(id).array();
-                for (byte b : idForBuffer) {
-                    WriteFilterOutputPort(b);
-                    byteswritten++;
-                }
-
-                byte[] result = ByteBuffer.allocate(MeasurementLength).putLong(measurement).array();
-                for (byte b : result) {
-                    WriteFilterOutputPort(b);
-                    byteswritten++;
-                }
+                Helper.writeIntoStream(IdLength,id,MeasurementLength,measurement,this);
 
             } // try
 

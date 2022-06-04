@@ -1,6 +1,4 @@
 import java.nio.ByteBuffer;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 
 public class TemperatureFilter extends FilterFramework{
 
@@ -22,8 +20,6 @@ public class TemperatureFilter extends FilterFramework{
 
 
         // Next we write a message to the terminal to let the world know we are alive...
-
-      ///  System.out.print( "\n" + this.getName() + "::Temperature Reading ");
 
         while (true)
         {
@@ -72,25 +68,19 @@ public class TemperatureFilter extends FilterFramework{
 
                 }
 
-
+                /*************************************************************
+                 *	If the id is 4 - the measurement is temperature, we convert it
+                 *************************************************************/
                 if ( id == 4 )
                 {
                     byte[] celsiusArray = ByteBuffer.allocate(MeasurementLength).putDouble((Double.longBitsToDouble(measurement) -32) * 5 / 9).array();
                     measurement = ByteBuffer.wrap(celsiusArray).getLong();
 
                 } // if
-
-                byte[] idForBuffer = ByteBuffer.allocate(IdLength).putInt(id).array();
-                for (byte b : idForBuffer) {
-                    WriteFilterOutputPort(b);
-                    byteswritten++;
-                }
-
-                byte[] result = ByteBuffer.allocate(MeasurementLength).putLong(measurement).array();
-                for (byte b : result) {
-                    WriteFilterOutputPort(b);
-                    byteswritten++;
-                }
+                /*************************************************************
+                 *	Pass it on
+                 *************************************************************/
+                Helper.writeIntoStream(IdLength,id,MeasurementLength,measurement,this);
 
             } // try
 
