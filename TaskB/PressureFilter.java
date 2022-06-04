@@ -108,7 +108,7 @@ public class PressureFilter extends FilterFramework {
                     } else {
 
                         /*************************************************************
-                         *	The passed input is not a wild point update the markers pointing to previous acceptable pressures
+                         *	It is a wild point, add it to the designated array for wild points and await further "good"point
                          *************************************************************/
                         lastGoodPressure = currentGoodPressure;
                         currentGoodPressure = input.getPressure();
